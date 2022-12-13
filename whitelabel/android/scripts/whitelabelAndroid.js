@@ -26,7 +26,7 @@ function WhitelabelAndroid(brand) {
 }
 
 function ChangeNameApp(name) {
-  console.log(process.pwd());
+  console.log(path.resolve(__dirname));
   // const appNamePath = `${mainPath}/app/src/main/res/values/strings.xml`;
   // const androidStringsFile = fs.readFileSync(appNamePath, 'utf-8');
 
