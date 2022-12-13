@@ -31,7 +31,7 @@ workflows:
     scripts:
       - name: Build Android
         working_directory: whitelabel/android/brands/superpao
-        script: pwd
+        script: node index.js
       - name: yarn install
         script: |
           yarn install
