@@ -5,7 +5,7 @@ const {JavaPathAndroid} = require('../../global/javaPath');
 const {newArchitectureWhitelabel} = require('./newarchitecture');
 const {ChangeAppJsonRN} = require('../../global/changeAppJsonRN');
 
-const mainPath = path.resolve(__dirname, '../../../', 'android');
+const mainPath = path.resolve(__dirname, '../../../../', 'android');
 
 function WhitelabelAndroid(brand) {
   if (brand) {
