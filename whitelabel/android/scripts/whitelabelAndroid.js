@@ -26,15 +26,15 @@ function WhitelabelAndroid(brand) {
 }
 
 function ChangeNameApp(name) {
-  console.log(mainPath);
-  // const appNamePath = `${mainPath}/app/src/main/res/values/strings.xml`;
-  // const androidStringsFile = fs.readFileSync(appNamePath, 'utf-8');
+  console.log(mainPath)
+  const appNamePath = `${mainPath}/app/src/main/res/values/strings.xml`;
+  const androidStringsFile = fs.readFileSync(appNamePath, 'utf-8');
 
-  // const regex = new RegExp('(<string name="app_name">)(.*?)(</string>)');
-  // const setNewNameApp = androidStringsFile.replace(regex, `$1${name}$3`);
+  const regex = new RegExp('(<string name="app_name">)(.*?)(</string>)');
+  const setNewNameApp = androidStringsFile.replace(regex, `$1${name}$3`);
 
-  // console.log(`Reescrevendo nome do app, app: ${name}`);
-  // fs.writeFileSync(appNamePath, setNewNameApp);
+  console.log(`Reescrevendo nome do app, app: ${name}`);
+  fs.writeFileSync(appNamePath, setNewNameApp);
 }
 
 function ChangeGradlewApplicationId(applicationId) {
