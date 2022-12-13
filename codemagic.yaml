@@ -29,9 +29,9 @@ workflows:
       node: v14.19.3
       java: 11.0.17
     scripts:
-      - name: Create version superpao
-        script: |
-          cd whitelabel/android/brands/superpao && node index.js
+      - name: Build Android
+        working_directory: mobile/android
+        script: pwd
       - name: yarn install
         script: |
           yarn install
