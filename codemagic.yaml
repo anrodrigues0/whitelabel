@@ -1,0 +1,12 @@
+workflows:
+  version-boa-android:
+    name: Whitelabel Boa Android
+    instance_type: mac_mini
+
+  version-plurix-android:
+    name: Whitelabel plurix Android
+    instance_type: mac_mini
+
+  version-superpao-android:
+    name: Whitelabel superpao Android
+    instance_type: mac_mini
