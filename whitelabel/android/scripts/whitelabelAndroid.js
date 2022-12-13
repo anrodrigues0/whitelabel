@@ -141,18 +141,18 @@ function ChangeGetMainComponentNameReturn(nameApp) {
   fs.writeFileSync(mainActivityPath, setReturnMainComponentName);
 }
 
-function ChangeIconsApp(nameApp) {
-  const currentIconsApp = `${mainPath}/app/src/main/res`;
-  const newIconPath = path.resolve(__dirname, '../', `brands/${nameApp}/res`);
+// function ChangeIconsApp(nameApp) {
+//   const currentIconsApp = `${mainPath}/app/src/main/res`;
+//   const newIconPath = path.resolve(__dirname, '../', `brands/${nameApp}/res`);
 
-  fs.rmSync(currentIconsApp, {recursive: true, force: true});
-  try {
-    fse.copySync(newIconPath, currentIconsApp, {overwrite: false});
-    console.log(`Reescrevendo icones do app ${nameApp}`);
-  } catch (err) {
-    console.error(err);
-  }
-}
+//   fs.rmSync(currentIconsApp, {recursive: true, force: true});
+//   try {
+//     fse.copySync(newIconPath, currentIconsApp, {overwrite: false});
+//     console.log(`Reescrevendo icones do app ${nameApp}`);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
 
 module.exports = {
   WhitelabelAndroid,
