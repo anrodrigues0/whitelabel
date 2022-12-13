@@ -30,7 +30,7 @@ workflows:
       java: 11.0.17
     scripts:
       - name: Build Android
-        working_directory: mobile/android
+        working_directory: whitelabel/android/brands/superpao
         script: pwd
       - name: yarn install
         script: |
