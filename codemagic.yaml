@@ -29,9 +29,6 @@ workflows:
       node: v14.19.3
       java: 11.0.17
     scripts:
-      - name: Clean Gradlew
-        script: |
-          cd android && ./gradlew clean
       - name: Create version superpao
         script: |
           yarn whitelabel:superpao
