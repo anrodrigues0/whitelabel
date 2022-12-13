@@ -5,7 +5,7 @@ const {JavaPathAndroid} = require('../../global/javaPath');
 const {newArchitectureWhitelabel} = require('./newarchitecture');
 const {ChangeAppJsonRN} = require('../../global/changeAppJsonRN');
 
-const mainPath = path.resolve(__dirname, '../../', 'android');
+const mainPath = path.resolve(__dirname, '../../../', 'android');
 
 function WhitelabelAndroid(brand) {
   if (brand) {
@@ -26,15 +26,14 @@ function WhitelabelAndroid(brand) {
 }
 
 function ChangeNameApp(name) {
-  console.log(path.resolve(__dirname, '../../../'));
-  // const appNamePath = `${mainPath}/app/src/main/res/values/strings.xml`;
-  // const androidStringsFile = fs.readFileSync(appNamePath, 'utf-8');
+  const appNamePath = `${mainPath}/app/src/main/res/values/strings.xml`;
+  const androidStringsFile = fs.readFileSync(appNamePath, 'utf-8');
 
-  // const regex = new RegExp('(<string name="app_name">)(.*?)(</string>)');
-  // const setNewNameApp = androidStringsFile.replace(regex, `$1${name}$3`);
+  const regex = new RegExp('(<string name="app_name">)(.*?)(</string>)');
+  const setNewNameApp = androidStringsFile.replace(regex, `$1${name}$3`);
 
-  // console.log(`Reescrevendo nome do app, app: ${name}`);
-  // fs.writeFileSync(appNamePath, setNewNameApp);
+  console.log(`Reescrevendo nome do app, app: ${name}`);
+  fs.writeFileSync(appNamePath, setNewNameApp);
 }
 
 function ChangeGradlewApplicationId(applicationId) {
