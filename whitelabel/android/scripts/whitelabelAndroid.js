@@ -11,7 +11,7 @@ const mainPath = path.resolve(__dirname, '../../../', 'android');
 function WhitelabelAndroid(brand) {
   if (brand) {
     console.log(`Iniciando whitelabel para Android versao ${brand.nameApp}`);
-    ChangeIconsApp(brand.nameApp);
+    // ChangeIconsApp(brand.nameApp);
     ChangeAppJsonRN(brand.nameApp);
     ChangeNameApp(brand.nameApp);
     ChangeGradlewApplicationId(brand.packageName);
