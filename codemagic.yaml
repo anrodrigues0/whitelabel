@@ -1,12 +1,45 @@
 workflows:
   version-boa-android:
-    name: Whitelabel Boa Android
-    instance_type: mac_mini
+    name: Version Boa Android
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      node: v14.19.3
+      java: 11.0.17
+    scripts:
+      - name: Empty
+        script: echo 'waiting for whitelabel'
 
   version-plurix-android:
-    name: Whitelabel plurix Android
-    instance_type: mac_mini
+    name: Version Plurix Android
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      node: v14.19.3
+      java: 11.0.17
+    scripts:
+      - name: Empty
+        script: echo 'waiting for whitelabel'
 
   version-superpao-android:
-    name: Whitelabel superpao Android
-    instance_type: mac_mini
+    name: Version Superpao Android
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      node: v14.19.3
+      java: 11.0.17
+    scripts:
+      - name: Clean Gradlew
+        script: |
+          cd android && ./gradlew clean
+      - name: Create version superpao
+        script: |
+          yarn whitelabel:superpao
+      - name: yarn install
+        script: |
+          yarn install
+      - name: Create APK
+        script: |
+          cd android && ./gradlew assembleRelease
+    artifacts:
+    - android/app/build/outputs/**/*.apk
