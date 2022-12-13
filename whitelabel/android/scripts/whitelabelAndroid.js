@@ -11,29 +11,30 @@ function WhitelabelAndroid(brand) {
   if (brand) {
     console.log(`Iniciando whitelabel para Android versao ${brand.nameApp}`);
     // ChangeIconsApp(brand.nameApp);
-    ChangeAppJsonRN(brand.nameApp);
+    // ChangeAppJsonRN(brand.nameApp);
     ChangeNameApp(brand.nameApp);
-    ChangeGradlewApplicationId(brand.packageName);
-    ChangePackageAndroidManifest(brand.packageName);
-    ChangePackageBuck(brand.packageName);
-    ChangeNameFolderJava(brand.nameApp);
-    ChangePackageMainApplication(brand.packageName);
-    ChangePackageMainActivity(brand.packageName);
-    ChangeGetMainComponentNameReturn(brand.nameApp);
-    newArchitectureWhitelabel(brand);
+    // ChangeGradlewApplicationId(brand.packageName);
+    // ChangePackageAndroidManifest(brand.packageName);
+    // ChangePackageBuck(brand.packageName);
+    // ChangeNameFolderJava(brand.nameApp);
+    // ChangePackageMainApplication(brand.packageName);
+    // ChangePackageMainActivity(brand.packageName);
+    // ChangeGetMainComponentNameReturn(brand.nameApp);
+    // newArchitectureWhitelabel(brand);
     return;
   }
 }
 
 function ChangeNameApp(name) {
-  const appNamePath = `${mainPath}/app/src/main/res/values/strings.xml`;
-  const androidStringsFile = fs.readFileSync(appNamePath, 'utf-8');
+  console.log(mainPath);
+  // const appNamePath = `${mainPath}/app/src/main/res/values/strings.xml`;
+  // const androidStringsFile = fs.readFileSync(appNamePath, 'utf-8');
 
-  const regex = new RegExp('(<string name="app_name">)(.*?)(</string>)');
-  const setNewNameApp = androidStringsFile.replace(regex, `$1${name}$3`);
+  // const regex = new RegExp('(<string name="app_name">)(.*?)(</string>)');
+  // const setNewNameApp = androidStringsFile.replace(regex, `$1${name}$3`);
 
-  console.log(`Reescrevendo nome do app, app: ${name}`);
-  fs.writeFileSync(appNamePath, setNewNameApp);
+  // console.log(`Reescrevendo nome do app, app: ${name}`);
+  // fs.writeFileSync(appNamePath, setNewNameApp);
 }
 
 function ChangeGradlewApplicationId(applicationId) {
