@@ -147,7 +147,6 @@ function ChangeIconsApp(nameApp) {
   const newIconPath = path.resolve(__dirname, '../', `brands/${nameApp}/res`);
 
   fs.rmSync(currentIconsApp, {recursive: true, force: true});
-
   try {
     fse.copySync(newIconPath, currentIconsApp, {overwrite: false});
     console.log(`Reescrevendo icones do app ${nameApp}`);

@@ -32,9 +32,9 @@ workflows:
       - name: yarn install
         script: |
           yarn install
-      - name: Build Android
+      - name: Build superpao version
         working_directory: whitelabel/android/brands/superpao
-        script: node index.js
+        script: yarn install && node index.js
       - name: Create APK
         script: |
           cd android && ./gradlew assembleRelease
