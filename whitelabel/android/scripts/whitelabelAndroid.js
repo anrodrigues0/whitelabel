@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('node:fs');
 const fse = require('fs-extra');
 const path = require('path');
 
@@ -12,16 +12,16 @@ function WhitelabelAndroid(brand) {
   if (brand) {
     console.log(`Iniciando whitelabel para Android versao ${brand.nameApp}`);
     ChangeIconsApp(brand.nameApp);
-    ChangeAppJsonRN(brand.nameApp);
-    ChangeNameApp(brand.nameApp);
-    ChangeGradlewApplicationId(brand.packageName);
-    ChangePackageAndroidManifest(brand.packageName);
-    ChangePackageBuck(brand.packageName);
-    ChangeNameFolderJava(brand.nameApp);
-    ChangePackageMainApplication(brand.packageName);
-    ChangePackageMainActivity(brand.packageName);
-    ChangeGetMainComponentNameReturn(brand.nameApp);
-    newArchitectureWhitelabel(brand);
+    // ChangeAppJsonRN(brand.nameApp);
+    // ChangeNameApp(brand.nameApp);
+    // ChangeGradlewApplicationId(brand.packageName);
+    // ChangePackageAndroidManifest(brand.packageName);
+    // ChangePackageBuck(brand.packageName);
+    // ChangeNameFolderJava(brand.nameApp);
+    // ChangePackageMainApplication(brand.packageName);
+    // ChangePackageMainActivity(brand.packageName);
+    // ChangeGetMainComponentNameReturn(brand.nameApp);
+    // newArchitectureWhitelabel(brand);
     return;
   }
 }
@@ -147,6 +147,7 @@ function ChangeIconsApp(nameApp) {
   const newIconPath = path.resolve(__dirname, '../', `brands/${nameApp}/res`);
 
   fs.rmSync(currentIconsApp, {recursive: true, force: true});
+
   try {
     fse.copySync(newIconPath, currentIconsApp, {overwrite: false});
     console.log(`Reescrevendo icones do app ${nameApp}`);

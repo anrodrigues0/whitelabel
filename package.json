@@ -13,6 +13,7 @@
     "whitelabel:plurix": "cd whitelabel/android/brands/plurix && node index.js"
   },
   "dependencies": {
+    "fs-extra": "11.1.0",
     "react": "18.1.0",
     "react-native": "0.70.6",
     "react-native-device-info": "10.3.0"
