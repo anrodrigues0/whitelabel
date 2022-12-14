@@ -12,16 +12,16 @@ function WhitelabelAndroid(brand) {
   if (brand) {
     console.log(`Iniciando whitelabel para Android versao ${brand.nameApp}`);
     ChangeIconsApp(brand.nameApp);
-    // ChangeAppJsonRN(brand.nameApp);
-    // ChangeNameApp(brand.nameApp);
-    // ChangeGradlewApplicationId(brand.packageName);
-    // ChangePackageAndroidManifest(brand.packageName);
-    // ChangePackageBuck(brand.packageName);
-    // ChangeNameFolderJava(brand.nameApp);
-    // ChangePackageMainApplication(brand.packageName);
-    // ChangePackageMainActivity(brand.packageName);
-    // ChangeGetMainComponentNameReturn(brand.nameApp);
-    // newArchitectureWhitelabel(brand);
+    ChangeAppJsonRN(brand.nameApp);
+    ChangeNameApp(brand.nameApp);
+    ChangeGradlewApplicationId(brand.packageName);
+    ChangePackageAndroidManifest(brand.packageName);
+    ChangePackageBuck(brand.packageName);
+    ChangeNameFolderJava(brand.nameApp);
+    ChangePackageMainApplication(brand.packageName);
+    ChangePackageMainActivity(brand.packageName);
+    ChangeGetMainComponentNameReturn(brand.nameApp);
+    newArchitectureWhitelabel(brand);
     return;
   }
 }
