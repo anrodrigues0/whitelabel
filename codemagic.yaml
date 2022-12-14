@@ -7,7 +7,7 @@ workflows:
       node: v14.19.3
       java: 11.0.17
     scripts:
-     - name: yarn install
+      - name: yarn install
         script: |
           yarn install
       - name: Build boa version
