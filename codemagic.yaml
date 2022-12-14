@@ -7,8 +7,18 @@ workflows:
       node: v14.19.3
       java: 11.0.17
     scripts:
-      - name: Empty
-        script: echo 'waiting for whitelabel'
+     - name: yarn install
+        script: |
+          yarn install
+      - name: Build boa version
+        working_directory: whitelabel/android/brands/boa
+        script: yarn install && node index.js
+      - name: Create APK
+        script: |
+          cd android && ./gradlew assembleRelease
+    artifacts:
+    - android/app/build/outputs/**/*.apk
+
 
   version-plurix-android:
     name: Version Plurix Android
