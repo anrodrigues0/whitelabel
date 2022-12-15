@@ -28,8 +28,17 @@ workflows:
       node: v14.19.3
       java: 11.0.17
     scripts:
-      - name: Empty
-        script: echo 'waiting for whitelabel'
+      - name: yarn install
+        script: |
+          yarn install
+      - name: Build superpao version
+        working_directory: whitelabel/android/brands/plurix
+        script: yarn install && node index.js
+      - name: Create APK
+        script: |
+          cd android && ./gradlew assembleRelease
+    artifacts:
+    - android/app/build/outputs/**/*.apk
 
   version-superpao-android:
     name: Version Superpao Android
