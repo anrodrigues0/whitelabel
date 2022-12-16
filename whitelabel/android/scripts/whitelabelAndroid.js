@@ -61,7 +61,6 @@ function ChangePackageAndroidManifest(manifestAndroidId) {
     regex,
     `$1"${manifestAndroidId}"`,
   );
-
   console.log(
     `Reescrevendo Android Manifest Package,  package: ${manifestAndroidId}`,
   );
