@@ -50,7 +50,7 @@ workflows:
       android_signing:
         - superpao_keystore
       groups:
-        - google_play
+        - google_credentials
       vars:
          PACKAGE_NAME: "com.superpao"
     scripts:
