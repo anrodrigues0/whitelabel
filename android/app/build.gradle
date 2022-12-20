@@ -129,6 +129,13 @@ def reactNativeArchitectures() {
     return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
 }
 
+def keystorePropertiesFile = rootProject.file('key.properties')
+def keystoreProperties = new Properties()
+
+if (keystorePropertiesFile.exists()) {
+  keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -224,12 +231,11 @@ android {
               storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
               keyAlias System.getenv()["CM_KEY_ALIAS"]
               keyPassword System.getenv()["CM_KEY_PASSWORD"]
-            } 
-          else {
-              keyAlias keystoreProperties['keyAlias']
-              keyPassword keystoreProperties['keyPassword']
-              storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-              storePassword keystoreProperties['storePassword']
+            } else if (keystorePropertiesFile.exists()) {
+                storeFile file(keystoreProperties['PLURIX_UPLOAD_STORE_FILE'])
+                storePassword keystoreProperties['PLURIX_UPLOAD_STORE_PASSWORD']
+                keyAlias keystoreProperties['PLURIX_UPLOAD_KEY_ALIAS']
+                keyPassword keystoreProperties['PLURIX_UPLOAD_KEY_PASSWORD']
             }
         }
     }
@@ -240,7 +246,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
