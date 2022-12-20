@@ -8,6 +8,7 @@ const App = () => {
     <View style={styles.container}>
       <Text style={styles.texts}>{CommonStrings.title}</Text>
       <Text style={styles.texts}>{CommonStrings.subtitle}</Text>
+      <Text style={styles.texts}>Deploy with codemagic</Text>
     </View>
   );
 };
