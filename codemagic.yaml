@@ -26,7 +26,7 @@ workflows:
         script: | 
           cd android && ./gradlew bundleRelease
     artifacts:
-    - android/app/build/outputs/**/*.apk
+    - android/app/build/outputs/**/*.aab
     publishing:
       google_play:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
