@@ -6,6 +6,12 @@ workflows:
     environment:
       node: v14.19.3
       java: 11.0.17
+      android_signing:
+        - superpao_keystore
+      groups:
+        - google_credentials
+      vars:
+        PACKAGE_NAME: "com.boa"
     scripts:
       - name: yarn install
         script: |
@@ -13,32 +19,19 @@ workflows:
       - name: Build boa version
         working_directory: whitelabel/android/brands/boa
         script: yarn install && node index.js
-      - name: Create APK
-        script: |
-          cd android && ./gradlew assembleRelease
+      - name: Set Android SDK location
+        script: | 
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Build Android release
+        script: | 
+          cd android && ./gradlew bundleRelease
     artifacts:
     - android/app/build/outputs/**/*.apk
-
-
-  version-plurix-android:
-    name: Version Plurix Android
-    instance_type: mac_mini_m1
-    max_build_duration: 60
-    environment:
-      node: v14.19.3
-      java: 11.0.17
-    scripts:
-      - name: yarn install
-        script: |
-          yarn install
-      - name: Build superpao version
-        working_directory: whitelabel/android/brands/plurix
-        script: yarn install && node index.js
-      - name: Create APK
-        script: |
-          cd android && ./gradlew assembleRelease
-    artifacts:
-    - android/app/build/outputs/**/*.apk
+    publishing:
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal
+        submit_as_draft: true
 
   version-superpao-android:
     name: Version Superpao Android
@@ -73,3 +66,23 @@ workflows:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: internal
         submit_as_draft: true
+
+  version-plurix-android:
+    name: Version Plurix Android
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      node: v14.19.3
+      java: 11.0.17
+    scripts:
+      - name: yarn install
+        script: |
+          yarn install
+      - name: Build superpao version
+        working_directory: whitelabel/android/brands/plurix
+        script: yarn install && node index.js
+      - name: Create APK
+        script: |
+          cd android && ./gradlew assembleRelease
+    artifacts:
+    - android/app/build/outputs/**/*.apk
